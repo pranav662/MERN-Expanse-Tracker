@@ -2,13 +2,13 @@
   "name": "spendsmart-expense-tracker",
   "version": "1.0.0",
   "description": "SpendSmart — MERN Full-Stack Expense Tracker",
-  "scripts": {
-    "install-all": "npm install --prefix backend && npm install --prefix frontend",
-    "build": "npm run build --prefix frontend",
-    "start": "node backend/server.js",
-    "render-build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+  "engines": {
+    "node": ">=18.0.0"
   },
-  "keywords": ["mern", "expense-tracker"],
+  "scripts": {
+    "render-build": "bash render-build.sh",
+    "start": "node backend/server.js"
+  },
   "author": "Pranav",
   "license": "MIT"
 }
