@@ -1,0 +1,14 @@
+{
+  "name": "spendsmart-expense-tracker",
+  "version": "1.0.0",
+  "description": "SpendSmart — MERN Full-Stack Expense Tracker with dark glassmorphism UI",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && node server.js",
+    "render-build": "npm run install-all && npm run build"
+  },
+  "keywords": ["mern", "expense-tracker", "react", "nodejs", "mongodb"],
+  "author": "Pranav",
+  "license": "MIT"
+}
