@@ -69,11 +69,31 @@ SpendSmart goes beyond simple CRUD operations to deliver a production-ready fina
 
 ---
 
-## 📸 Media Preview
+## 📸 Project Showcase
 
-| Dashboard & Charts | Analytics & Insights | Security & Recovery |
-|:---:|:---:|:---:|
-| ![Dashboard](screenshots/dashboard.png) | ![Analytics](screenshots/analytics.png) | ![Login](screenshots/login.png) |
+### 📊 Comprehensive Dashboard
+A bird's-eye view of your finances with glassmorphism cards and real-time expense tracking.
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### 📈 Advanced Analytics & Multi-Period Insights
+Visualize spending patterns using interactive Recharts. Switch between Daily, Weekly, Monthly, and Yearly views with ease.
+![Analytics](screenshots/analytics.png)
+
+---
+
+### 🔍 Powerful Transaction Filters
+The multi-filter panel allows you to drill down into your data by categories, date ranges, and keywords.
+![Filters](screenshots/filters.png)
+
+---
+
+### 🔐 Secure Authentication & Account Recovery
+Enterprise-grade security featuring JWT, BCrypt hashing, and OTP-based email verification.
+| Login Page | Sign Up Page |
+|:---:|:---:|
+| ![Login](screenshots/login.png) | ![Sign Up](screenshots/signup.png) |
 
 ---
 
