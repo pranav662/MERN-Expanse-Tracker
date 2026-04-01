@@ -12,6 +12,12 @@
   Built with MongoDB · Express.js · React (Vite) · Node.js · TailwindCSS · Recharts
 </p>
 
+<p align="center">
+  <a href="https://mern-expanse-tracker-production.up.railway.app/login" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-⚡_View_App-blueviolet?style=for-the-badge&logo=railway" />
+  </a>
+</p>
+
 ---
 
 ## 📸 Screenshots
@@ -43,6 +49,9 @@
 - ✅ **MongoDB Database** — Cloud-hosted on MongoDB Atlas via Mongoose ODM
 - ✅ **RESTful API** — Express.js backend with protected routes
 - ✅ **Per-user Isolation** — Each user sees only their own expenses
+- ✅ **Account Security** — Secure password changing and permanent account deletion
+- ✅ **Recovery Flow** — Email-based password reset for forgotten credentials
+- ✅ **Email Notifications** — OTP verification for registration (NodeMailer)
 
 ### Dashboard & Analytics
 - 📊 **3-Tab Dashboard** — Overview, Analytics, Transactions
@@ -106,7 +115,10 @@ MERN FULL STACK PROJECT/
 │   │   ├── pages/
 │   │   │   ├── Login.jsx            # Login page
 │   │   │   ├── Signup.jsx           # Signup page with feature pills
-│   │   │   └── Dashboard.jsx        # Main dashboard (3 tabs, charts, filters)
+│   │   │   ├── Dashboard.jsx        # Main dashboard (3 tabs, charts, filters)
+│   │   │   ├── Profile.jsx          # Security settings and account management
+│   │   │   ├── ForgotPassword.jsx   # Password reset request flow
+│   │   │   └── ResetPassword.jsx    # Reset password entry point
 │   │   ├── api.js                   # Axios instance with JWT interceptor
 │   │   ├── App.jsx                  # Router + animated background layers
 │   │   ├── main.jsx                 # React entry point

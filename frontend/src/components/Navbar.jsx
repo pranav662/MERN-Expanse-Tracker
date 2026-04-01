@@ -36,12 +36,15 @@ const Navbar = () => {
           {/* Right side */}
           {user ? (
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2">
+              <Link 
+                to="/profile"
+                className="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2 hover:bg-white/10 transition-colors"
+              >
                 <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">
                   {user.username?.charAt(0).toUpperCase()}
                 </div>
                 <span className="text-sm font-medium text-slate-300">{user.username}</span>
-              </div>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-200"

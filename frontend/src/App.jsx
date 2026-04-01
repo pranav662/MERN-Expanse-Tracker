@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import Navbar from './components/Navbar';
 import ParticleBackground from './components/ParticleBackground';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import Profile from './pages/Profile';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -48,7 +52,10 @@ const AppRoutes = () => {
             <Route path="/" element={<Navigate to={user ? '/dashboard' : '/login'} />} />
             <Route path="/login"    element={user ? <Navigate to="/dashboard" /> : <Login />} />
             <Route path="/signup"   element={user ? <Navigate to="/dashboard" /> : <Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
           </Routes>
         </main>
       </div>
@@ -57,7 +64,9 @@ const AppRoutes = () => {
 };
 
 const App = () => (
-  <AuthProvider><AppRoutes /></AuthProvider>
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+    <AuthProvider><AppRoutes /></AuthProvider>
+  </GoogleOAuthProvider>
 );
 
 export default App;
