@@ -37,10 +37,20 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, email, password) => {
     const res = await api.post('/auth/register', { username, email, password });
+    return res.data; // Now only returns the "OTP sent" message
+  };
+
+  const verifyOtp = async (email, otp) => {
+    const res = await api.post('/auth/verify-otp', { email, otp });
     localStorage.setItem('token', res.data.token);
     localStorage.setItem('user', JSON.stringify(res.data.user));
     setToken(res.data.token);
     setUser(res.data.user);
+    return res.data;
+  };
+
+  const resendOtp = async (email) => {
+    const res = await api.post('/auth/resend-otp', { email });
     return res.data;
   };
 
@@ -52,7 +62,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, verifyOtp, resendOtp, logout }}>
       {children}
     </AuthContext.Provider>
   );
