@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SpendSmart — MERN Full-Stack Expense Tracker",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "build": "bash render-build.sh",
