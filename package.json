@@ -6,8 +6,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
+    "build": "bash render-build.sh",
     "render-build": "bash render-build.sh",
-    "start": "node backend/server.js"
+    "start": "cd backend && node server.js"
   },
   "author": "Pranav",
   "license": "MIT"
