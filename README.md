@@ -168,6 +168,29 @@ MERN FULL STACK PROJECT/
 | DELETE| `/:id` | Remove expense record | ✅ |
 
 ---
+## 🛠️ DNS Issue & Solution
+
+**Problem:** Users may see the error *“This site can’t be reached – DNS_PROBE_FINISHED_NXDOMAIN”* (or similar DNS resolution errors) when trying to access the deployed application.
+
+**Solution:**
+
+1. **Use a reliable DNS provider** – switch to Google DNS (`8.8.8.8` and `8.8.4.4`) or Cloudflare DNS (`1.1.1.1` and `1.0.0.1`).
+2. **Update your domain’s DNS records** – point the A record to the IP address supplied by your hosting service (e.g., Railway, Render). If you are using a custom sub‑domain, ensure the CNAME record points to the correct target.
+3. **Allow propagation** – DNS changes can take up to 24 hours to propagate worldwide.
+4. **Flush your local DNS cache** – on Windows run `ipconfig /flushdns`; on macOS run `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`; on Linux run `sudo systemd-resolve --flush-caches` or restart the `nscd` service.
+5. **Verify the DNS resolution** – use `nslookup yourdomain.com` or `dig yourdomain.com` to confirm the correct IP is returned.
+
+After completing these steps, retry accessing the application. The error should be resolved.
+
+
+**Problem:** Users may see the error *“This site can’t be reached – DNS_PROBE_FINISHED_NXDOMAIN”* when trying to access the deployed app.
+
+**Solution:** Update your DNS provider to use a reliable DNS service such as **Google DNS (8.8.8.8 / 8.8.4.4)** or **Cloudflare DNS (1.1.1.1)**. After changing the DNS records, allow propagation (up to 24 hours) and clear your local DNS cache (`ipconfig /flushdns` on Windows) before retrying.
+
+**Problem:** Users may encounter a DNS resolution error when accessing the deployed application, resulting in a *ERR_NAME_NOT_RESOLVED* or similar message.
+
+**Solution:** Ensure the custom domain's DNS A record points to the correct IP address provided by the hosting service (e.g., Railway, Render). After updating the DNS records, allow up to 24 hours for propagation, then clear your local DNS cache (`ipconfig /flushdns` on Windows) and retry accessing the app.
+
 
 ## 👨‍💻 Author & Support
 **Built with ❤️ for Financial Freedom.**
