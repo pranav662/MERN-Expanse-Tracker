@@ -11,10 +11,15 @@ router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
+    if (!process.env.JWT_SECRET) {
+      console.error('FATAL ERROR: JWT_SECRET is not defined.');
+      return res.status(500).json({ msg: 'Server configuration error' });
+    }
+
     let user = await User.findOne({ email });
 
     if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+      return res.status(400).json({ msg: 'Email already exists' });
     }
 
     user = new User({
@@ -44,8 +49,12 @@ router.post('/register', async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    console.error('Registration Error:', err);
+    if (err.code === 11000) {
+      const field = Object.keys(err.keyValue)[0];
+      return res.status(400).json({ msg: `${field.charAt(0).toUpperCase() + field.slice(1)} already exists` });
+    }
+    res.status(500).json({ msg: 'Server error during registration' });
   }
 });
 
@@ -56,6 +65,11 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    if (!process.env.JWT_SECRET) {
+      console.error('FATAL ERROR: JWT_SECRET is not defined.');
+      return res.status(500).json({ msg: 'Server configuration error' });
+    }
+
     let user = await User.findOne({ email });
 
     if (!user) {
@@ -84,8 +98,8 @@ router.post('/login', async (req, res) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
+    console.error('Login Error:', err);
+    res.status(500).json({ msg: 'Server error during login' });
   }
 });
 

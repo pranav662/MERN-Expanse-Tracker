@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -35,7 +33,7 @@ app.use('/api/expenses', expenseRoutes);
 // Serve React frontend
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 
-app.get('*splat', (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
 });
 
