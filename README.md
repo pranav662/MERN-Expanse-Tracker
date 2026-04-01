@@ -179,6 +179,22 @@ MERN FULL STACK PROJECT/
 3. **Allow propagation** – DNS changes can take up to 24 hours to propagate worldwide.
 4. **Flush your local DNS cache** – on Windows run `ipconfig /flushdns`; on macOS run `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`; on Linux run `sudo systemd-resolve --flush-caches` or restart the `nscd` service.
 5. **Verify the DNS resolution** – use `nslookup yourdomain.com` or `dig yourdomain.com` to confirm the correct IP is returned.
+6. **Cellular network considerations** – If the site works on Wi‑Fi but not on cellular data, the carrier’s DNS servers may be caching outdated records or blocking the IP. Try the following:
+   - Switch the device’s DNS to Google/Cloudflare (as in step 1).
+   - Use a VPN to bypass carrier DNS.
+   - Wait for DNS propagation and retry.
+
+After completing these steps, retry accessing the application. The error should be resolved.
+
+**Problem:** Users may see the error *“This site can’t be reached – DNS_PROBE_FINISHED_NXDOMAIN”* (or similar DNS resolution errors) when trying to access the deployed application.
+
+**Solution:**
+
+1. **Use a reliable DNS provider** – switch to Google DNS (`8.8.8.8` and `8.8.4.4`) or Cloudflare DNS (`1.1.1.1` and `1.0.0.1`).
+2. **Update your domain’s DNS records** – point the A record to the IP address supplied by your hosting service (e.g., Railway, Render). If you are using a custom sub‑domain, ensure the CNAME record points to the correct target.
+3. **Allow propagation** – DNS changes can take up to 24 hours to propagate worldwide.
+4. **Flush your local DNS cache** – on Windows run `ipconfig /flushdns`; on macOS run `sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder`; on Linux run `sudo systemd-resolve --flush-caches` or restart the `nscd` service.
+5. **Verify the DNS resolution** – use `nslookup yourdomain.com` or `dig yourdomain.com` to confirm the correct IP is returned.
 
 After completing these steps, retry accessing the application. The error should be resolved.
 
