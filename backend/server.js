@@ -32,14 +32,12 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
 
-// PRODUCTION: Serve React frontend
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
+// Serve React frontend
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'dist')));
 
-  app.get('*splat', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
-  });
-}
+app.get('*splat', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+});
 
 // Database Connection & Server Start
 mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URL)
