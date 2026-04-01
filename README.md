@@ -146,13 +146,26 @@ MERN FULL STACK PROJECT/
    ```
 
 ### 📡 API Documentation
+
+#### 🔐 Auth Endpoints (`/api/auth`)
 | Method | Endpoint | Description | Auth |
 |---|---|---|---|
-| POST | `/api/auth/register` | Create account + Send OTP | ❌ |
-| POST | `/api/auth/verify-otp` | Verify OTP and Issue Token | ❌ |
-| POST | `/api/auth/login` | Secure User Login | ❌ |
-| GET | `/api/expenses` | Fetch filtered user data | ✅ |
-| POST | `/api/expenses` | Add new record | ✅ |
+| POST | `/register` | Register + Send Email OTP | ❌ |
+| POST | `/verify-otp` | Verify OTP & Log In | ❌ |
+| POST | `/login` | Standard Email/Pass Login | ❌ |
+| POST | `/google` | Google One-Tap Login | ❌ |
+| POST | `/forgot-password` | Request Reset Link | ❌ |
+| PUT | `/reset-password/:token` | Set New Password | ❌ |
+| PUT | `/change-password` | Update Password (Logged-in) | ✅ |
+| DELETE| `/profile` | Delete Account & Data | ✅ |
+
+#### 💸 Expense Endpoints (`/api/expenses`)
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| GET | `/` | Fetch all user expenses | ✅ |
+| POST | `/` | Create new expense | ✅ |
+| PUT | `/:id` | Update existing expense | ✅ |
+| DELETE| `/:id` | Remove expense record | ✅ |
 
 ---
 
