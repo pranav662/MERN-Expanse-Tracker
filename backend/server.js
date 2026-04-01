@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Database Connection & Server Start
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URL)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err.message));
 
