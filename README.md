@@ -4,143 +4,142 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
   <img src="https://img.shields.io/badge/Node.js-18-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Railway-⚡_Live-0B0D11?style=for-the-badge&logo=railway&logoColor=white" />
 </p>
 
 <h1 align="center">💰 SpendSmart — Expense Tracker</h1>
 <p align="center">
-  <strong>A premium, full-stack financial dashboard designed for deep spending insights.</strong>
+  <strong>A high-performance, full-stack financial ecosystem with glassmorphism UI and real-time analytics.</strong>
 </p>
-## ⚡ Live Demo
-**[Click here to Launch SpendSmart Application](https://mern-expanse-tracker-production.up.railway.app/login)**
+
+<p align="center">
+  <a href="https://mern-expanse-tracker-production.up.railway.app/login" target="_blank">
+    <img src="https://img.shields.io/badge/LIVE_DEMO-⚡_Launch_Application-blueviolet?style=for-the-badge&logo=railway" />
+  </a>
+</p>
 
 ---
 
-## 📸 Project Showcase
+## 🏗️ System Architecture
 
-### 📊 Dashboard — All-in-One Financial View
-![Dashboard](screenshots/dashboard.png)
+SpendSmart follows a robust **MERN Stack** architecture designed for security, scalability, and responsiveness.
 
-### 📈 Analytics — Data-Driven Insights
-| Analytics View | Comparison & Detail |
-|:---:|:---:|
-| ![Analytics](screenshots/analytics.png) | ![Filters](screenshots/filters.png) |
-
-### 🔐 Authentication Flow
-| Login | Sign Up |
-|:---:|:---:|
-| ![Login](screenshots/login.png) | ![Sign Up](screenshots/signup.png) |
-
----
-
-## ✨ Why SpendSmart?
-
-SpendSmart isn't just another CRUD app. It combines **highly specific financial tools** (like Indian Rupee ₹ support and daily/weekly/monthly/yearly period switching) with a **premium design system** (glassmorphism) to create an experience that feels alive and interactive.
-
-### 🎯 Key Highlights
-- **Real-time Data Visualization** — Beautiful Recharts integration for spending patterns.
-- **Advanced Filtering** — Narrow down expenses by date, category, amount, or keyword.
-- **Enterprise-grade Auth** — JWT, BCrypt, OTP verification, and Password Recovery.
-- **Performance Optimized** — Built on Vite for lightning-fast loads and smooth 60fps animations.
-
----
-
-## 🛠️ Features Deep-Dive
-
-### 📊 Financial Intelligence (Recharts)
-- 📈 **5 Interactive Chart Types** — Area, Bar, Line, Donut, and Progress bars.
-- ⏱️ **Multi-Period Analytics** — One-click switching between **Daily**, **Weekly**, **Monthly**, and **Yearly** views.
-- 📅 **Advanced Date Filters** — Custom range picker + 10 presets (Today, Last 7 Days, This Month, etc.).
-- 📉 **Comparison Logic** — Automatic calculation of growth/decrease vs previous periods.
-
-### 🔐 Security & Account Management
-- ✅ **OTP Verification** — 6-digit email OTP for secure user registration.
-- ✅ **Password Recovery** — Secure reset links sent via NodeMailer.
-- ✅ **Profile Management** — Update security credentials or permanently delete account data.
-- ✅ **Secure Backend** — JWT middleware with 10-round BCrypt password hashing.
-
-### 🌑 Visual Aesthetics (Glassmorphism)
-- ✨ **Particle Background** — Interactive Canvas particle network that responds to mouse hover.
-- 🌈 **Mesh Gradients** — Animated shifting radiant backgrounds.
-- 🔮 **Parallax Orbs** — Floating glass orbs with independent float animations.
-- 🇮🇳 **INR Localization** — Native currency formatting (`en-IN`) for all amounts.
+```mermaid
+graph LR
+    subgraph "Frontend (React + Vite)"
+        A[App & Global State] --> B[Glass UI Components]
+        B --> C[Axios Interceptor]
+    end
+    
+    subgraph "Security Layer"
+        C -->|JWT Token| D[Auth Middleware]
+    end
+    
+    subgraph "Backend (Node.js + Express)"
+        D --> E[Auth Controller]
+        D --> F[Expense Controller]
+    end
+    
+    subgraph "Data & External"
+        F <--> G[(MongoDB Atlas)]
+        E --> H[NodeMailer OTP]
+    end
+```
 
 ---
 
-## 📁 Project Structure
+## ✨ Engineering Excellence
+
+SpendSmart goes beyond simple CRUD operations to deliver a production-ready financial tool.
+
+### 📊 Data Intelligence
+- **Recharts Visualization** — Dynamic calculation and rendering of spending patterns at 60fps.
+- **Multi-Period Switching** — Real-time period shifting (**Daily, Weekly, Monthly, Yearly**) with instant re-calculations.
+- **Deep Filtering** — Multi-index search across categories, amount ranges, and custom date windows.
+
+### 🌑 Premium UX Design
+- **Glassmorphism UI** — High-performance blur effect cards with `backdrop-filter`.
+- **Canvas Particles** — Animated particle network that interacts with mouse positions.
+- **Responsive & Accessible** — Mobile-first design that adapts seamlessly to any screen size.
+
+### 🔐 Enterprise Security
+- **JWT Authentication** — Stateless auth with secure token management.
+- **BCrypt Encryption** — Passwords are hashed with 10 salt rounds.
+- **OTP Verification** — 6-digit email verification required for all new registrations.
+- **Password Recovery** — Secure email link recovery using `crypto.randomBytes`.
+
+---
+
+## 📸 Media Preview
+
+| Dashboard & Charts | Analytics & Insights | Security & Recovery |
+|:---:|:---:|:---:|
+| ![Dashboard](screenshots/dashboard.png) | ![Analytics](screenshots/analytics.png) | ![Login](screenshots/login.png) |
+
+---
+
+## 📂 Project Structure
 
 ```bash
 MERN FULL STACK PROJECT/
 ├── backend/
-│   ├── middleware/
-│   │   └── auth.js              # JWT security & protected routes
-│   ├── models/
-│   │   ├── User.js              # User schema (v2: added OTP, verification state)
-│   │   └── Expense.js           # Expense schema (mapped to categories)
-│   ├── routes/
-│   │   ├── auth.js              # Auth endpoints (v2: added Google, Reset flows)
-│   │   └── expenses.js          # Expense CRUD & advanced retrieval
-│   ├── utils/
-│   │   └── emailConfig.js       # NodeMailer configuration (OTP/Reset)
-│   ├── .env                     # Secrets (Auth, DB, Email)
-│   └── server.js                # Express logic & Database entry
+│   ├── middleware/              # JWT verification logic
+│   ├── models/                  # Mongoose Schemas (User, Expense)
+│   ├── routes/                  # Express Handlers (Auth, Expenses)
+│   ├── utils/                   # Shared utilities (NodeMailer)
+│   └── server.js                # Database connection & App entry
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── components/          # Reusable Glass UI components
-│   │   ├── context/             # Global State (AuthContext, JWT sync)
-│   │   ├── pages/
-│   │   │   ├── Login.jsx        # Glassmorphism Login
-│   │   │   ├── Signup.jsx       # Progressive onboarding
-│   │   │   ├── Dashboard.jsx    # Analytics + CRUD controller
-│   │   │   ├── Profile.jsx      # Security settings & deletion
-│   │   │   └── ForgotPassword.jsx # Recovery request controller
-│   │   ├── api.js               # Axios instance (JWT Interceptor)
-│   │   └── App.jsx              # Main Layering (Particles + Mesh + Router)
-│   ├── tailwind.config.js       # Custom animations & blur extensions
-│   └── package.json
+│   │   ├── components/          # Reusable Glass UI & Icons
+│   │   ├── context/             # React Context (Auth State)
+│   │   ├── pages/               # Functional pages (Dashboard, Profile, Recovery)
+│   │   ├── api.js               # Axios global instance
+│   │   └── App.jsx              # Main Layout & Animations
+│   └── tailwind.config.js       # Custom glassmorphism extensions
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Deployment & Onboarding
 
-### 1. Backend Setup
-```bash
-cd backend
-npm install
-```
-Create `backend/.env`:
-```env
-PORT=5000
-MONGO_URI=your_mongodb_atlas_uri
-JWT_SECRET=your_secret_key
-EMAIL_USER=your_gmail@gmail.com
-EMAIL_PASS=your_gmail_app_password
-```
+### 🛠️ Local Installation
+1. **Clone & Install**
+   ```bash
+   npm install --prefix backend
+   npm install --prefix frontend
+   ```
+2. **Environment Configuration**
+   Create `backend/.env`:
+   ```env
+   PORT=5000
+   MONGO_URI=your_atlas_uri
+   JWT_SECRET=your_jwt_secret
+   EMAIL_USER=your_gmail_id
+   EMAIL_PASS=your_app_password
+   ```
+3. **Run Development Server**
+   ```bash
+   # Both Backend (5000) and Frontend (5173) must run
+   npm start --prefix backend
+   npm run dev --prefix frontend
+   ```
 
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-### 3. Railway Deployment
-The project is optimized for Railway. Connect your repo and ensure the environment variables are mirrored in the Railway dashboard.
+### 📡 API Documentation
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/auth/register` | Create account + Send OTP | ❌ |
+| POST | `/api/auth/verify-otp` | Verify OTP and Issue Token | ❌ |
+| POST | `/api/auth/login` | Secure User Login | ❌ |
+| GET | `/api/expenses` | Fetch filtered user data | ✅ |
+| POST | `/api/expenses` | Add new record | ✅ |
 
 ---
 
-## 👨‍💻 Tech Stack
+## 👨‍💻 Author & Support
+**Built with ❤️ for Financial Freedom.**
 
-| Component | Technology |
-|---|---|
-| **Frontend** | React 18, Vite, TailwindCSS, Recharts, Lucide |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB Atlas (Cloud) |
-| **Email** | NodeMailer (Gmail Transporter) |
-| **Auth** | JWT, BCrypt, Crypto |
+Developed as a full-stack project focusing on high-performance MERN architecture. If you find this project helpful, give it a ⭐ to show your support!
 
 ---
 
